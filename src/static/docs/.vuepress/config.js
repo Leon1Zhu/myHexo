@@ -7,7 +7,7 @@ module.exports = {
   title: 'skyManage接口文档',
   port:8888,
   themeConfig: {
-    repo: 'SkyManager/SkyManager',
+    repo: 'Leon1Zhu/myHexo',
     sidebar: [
       {
         title: '说明',
