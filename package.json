@@ -1,12 +1,13 @@
 {
   "name": "hexo-site",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "ZhuLiang's hexo.",
+  "author": "Leon Zhu",
   "private": true,
   "hexo": {
     "version": "3.7.1"
   },
   "dependencies": {
-    "hexo": "^3.2.0",
     "hexo-deployer-git": "^0.3.1",
     "hexo-generator-archive": "^0.1.4",
     "hexo-generator-baidu-sitemap": "^0.1.2",
@@ -24,5 +25,8 @@
     "hexo-wordcount": "^3.0.2",
     "undefined": "^undefined",
     "valine": "^1.1.9-beta9"
+  },
+  "devDependencies": {
+    "hexo": "^3.7.1"
   }
 }
