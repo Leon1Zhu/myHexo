@@ -140,5 +140,27 @@ baz(); // <-- baz的调用位置
   // 但是在严格模式下则不会绑定到全局全局对象，会直接绑定到undefined
 ```
 
+2. 隐式绑定
+```javascript
+function foo() {
+    console.log(this.a);
+}
+ var obj = {
+    a: 2,
+    foo: foo,
+ };
+ 
+obj.foo();
+// 因为此时foo调用的函数上下文是obj，所以此时this就绑定到了obj上。调用位置会使用obj上下文来引用函数，因此你可以说函数被调用时obj对象'拥有'或者'包含'它
+```
+3. 显示绑定（call apply bind）
 
-
+```javascript
+ Function.prototype.bind = function(newThis) {
+    var args = Array.prototype.slice.call(arguments, 1);
+    var that = this;
+    return function() {
+        return that.apply(newThis, args.concat(Array.prototype.slice.call(arguments, 1));
+    }
+ }
+```
