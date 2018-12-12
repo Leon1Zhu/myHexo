@@ -101,3 +101,44 @@ console.log(foo.count); //0
 2. 使用foo.count 替代 this.count
 3. 使用call函数使this强制绑定到foo上（荐）
 ```
+
+* this调用栈和调用位置
+
+```javascript
+function baz() {
+    // 当前调用栈是：baz;
+    // 因此,当前调用位置是全局作用域
+    console.log('baz');
+    bar(); // bar的调用位置
+}
+
+function bar() {
+    // 当前调用栈是baz --> bar
+    // 因此，当前调用位置再baz中
+     console.log('bar');
+     foo(); // <-- foo的调用位置
+}
+
+function foo() {
+    // 当前调用栈是baz --> bar --> foo
+    // 因此，当前调用位置是在bar中
+    console.log('foo')
+}
+baz(); // <-- baz的调用位置
+```
+
+### this绑定规则
+
+1. 默认规则
+ * 再无法应用其他规则时的规则
+ ```javascript
+  function foo() {
+    console.log(this.a);
+  }
+  foo();
+  // 这里this默认绑定到了全局变量上，因为foo是直接使用不带任何修饰的函数引用进行调用的，所以应用了this的默认绑定，因此this指向全局对象
+  // 但是在严格模式下则不会绑定到全局全局对象，会直接绑定到undefined
+```
+
+
+
