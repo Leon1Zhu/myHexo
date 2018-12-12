@@ -78,3 +78,26 @@ with关键字可能会导致变量的泄露，看如下代码
  * 为什么要用this
    答： this提供了一种更优雅的方式来隐式'传递'一个对象引用，由此可以将API设计的更加简洁并且易于复用。随着使用的模式越来越多
      显式传递上下文对象会让代码越来越混乱，使用this就不会这样。
+     
+```javascript
+function foo(num) {
+    console.log('foo' + num);
+    
+    // 记录foo 被调用的次数
+    foo.count++;
+}
+foo.count = 0;
+var i = 0;
+for (i = 0; i < 10; i++ ) {
+    if (i > 5) {
+        foo(i);
+    }
+}
+console.log(foo.count); //0
+因为词法作用域的原因，foo函数中的this绑定到全局变量，导致count永远是0；
+// 解决方法
+
+1. 创建一个带count的对象
+2. 使用foo.count 替代 this.count
+3. 使用call函数使this强制绑定到foo上（荐）
+```
